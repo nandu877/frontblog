@@ -15,7 +15,7 @@ function BlogDetails({ selectedId }) {
         try {
             setIsLoading(true);
             if (selectedId !== null) {
-                const response = await connectToAPI(`/api/posts/my-post/${selectedId}`);
+                const response = await connectToAPI(`/api/public/posts/${selectedId}`);
                 if (response.status === 200) {
                     setPost(response?.data);
                 }

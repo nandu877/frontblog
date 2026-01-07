@@ -245,8 +245,7 @@ body {
   color: #333;
   word-break: break-word;
   overflow-wrap: anywhere;
-
- 
+  font-weight: 700;
   min-width: 0;
 }
 
@@ -432,6 +431,7 @@ body {
 .post-content {
   flex: 1;
   overflow-y: auto;
+  white-space: pre-line;
 }
 
 .post-content p {
@@ -695,6 +695,31 @@ textarea{
 }
 .listpad{
   padding: 0;
+}
+
+.post-time{
+  color: #afadad;
+  font-size: 0.7rem;
+}
+.home-icon{
+  padding: 8px 12px;
+  background-color: var(--main-color);
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+}
+.home-icon:nth-child(2),.home-icon:last-child{
+  background-color: transparent;
+  color: black;
+  border: 3px solid var(--main-color);
+}
+.home-icon:first-child{
+  padding: 8px 21px;
+}
+.icons{
+  
+  display: flex;
+  gap: 12px;
 }
 
 

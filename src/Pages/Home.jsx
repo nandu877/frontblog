@@ -16,13 +16,13 @@ function Home() {
                     {
                         !isLogin ? (
                             <>
-                               <div>
-                                <NavLink to={"/login"}>Login</NavLink>
-                                <NavLink to={"/signup"}>Signup</NavLink>
+                               <div className='icons'>
+                                <NavLink to={"/login"} className={"home-icon"}>Login</NavLink>
+                                <NavLink to={"/signup"} className={"home-icon"}>Signup</NavLink>
                                </div>
                             </>
                         ) : (
-                            <NavLink to={role === "ADMIN" ? "/admin" : "/author"}>Dashboard</NavLink>
+                            <NavLink to={role === "ADMIN" ? "/admin" : "/author"} className={"home-icon"}>Dashboard</NavLink>
                         )
                     }
                 </div>

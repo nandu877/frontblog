@@ -86,7 +86,7 @@ function AuthorPostsList(props) {
               {filter}
             </button>
           ))}
-          <button onClick={() => setShowAddPopup(true)} className="addbutton">ADD POST</button>
+          <button onClick={() => setShowAddPopup(true)} className="addbutton"><i class="fa-solid fa-plus"></i> ADD POST</button>
         </div>
 
         <div className="post-list">

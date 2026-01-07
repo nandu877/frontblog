@@ -1,9 +1,9 @@
 import Login from "./Components/Login";
 import "./App.css"
 import Register from "./Components/Register";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./Components/AuthContext";
-import {Routes,Route, Navigate} from "react-router-dom"
+import {Routes,Route, Navigate, useNavigate} from "react-router-dom"
 import Home from "./Pages/Home";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Admin from "./Pages/Admin";
@@ -14,27 +14,26 @@ import UsersSection from "./Components/Admin/UsersSection";
 import ProfileSection from "./Components/Admin/ProfileSection";
 import AuthorPosts from "./Components/Author/AuthorPosts";
 import { Toaster } from "react-hot-toast";
+import Loading from "./Components/Loading";
 
 function App() {
 
-  const{isLogin,role}=useContext(AuthContext);
+  const { login, role, isLogin,loading } = useContext(AuthContext);
+
+
+  if(loading) return <Loading/>
+
   return (
    <>
    <Toaster containerClassName="toast"  position="top-right" toastOptions={{duration:2000}}/>
    <Routes>
     <Route path="/" element={<Home/>}/>
-    {
-      !isLogin ?
+    
       <>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Register/>}/>
       </>
-      :
-      <>
-      <Route path="/login" element={<Navigate to={role === "ADMIN" ? "/admin" : "/author"}/>}/>
-      <Route path="/signup" element={<Navigate to={role === "ADMIN" ? "/admin" : "/author"}/>}/>
-      </>
-    }
+    
 
     <Route element={<ProtectedRoute isLogin={isLogin} role={role} allowdRole={"ADMIN"}/>}>
     <Route path="/admin" element={<Admin/>}>

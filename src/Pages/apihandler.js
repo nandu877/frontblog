@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const SERVER_URL = "https://blogbackend-production-f275.up.railway.app/";
+const SERVER_URL = "https://backend-production-29df.up.railway.app/";
 
 const api = axios.create({
   baseURL: SERVER_URL,

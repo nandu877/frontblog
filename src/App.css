@@ -448,6 +448,10 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.post-footer-buttons{
+  display: flex;
+  gap: 20px;
+}
 
 .post-status {
   font-weight: 500;
@@ -553,6 +557,7 @@ body {
 textarea{
   height: 260px;
   resize: none;
+  padding: 10px;
 }
 
 .delete-btn{

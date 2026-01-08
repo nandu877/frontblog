@@ -103,12 +103,14 @@ function AuthorPostDetails({ selectedId }) {
                         {post?.status}
                     </span></span>
 
-                    <button className="update-btn" onClick={openUpdatePopup}>
+                    <div className="post-footer-buttons">
+                        <button className="update-btn" onClick={openUpdatePopup}>
                         Update Post
                     </button>
                     <button className="delete-btn" onClick={() => setShowDeletePopup(true)}>
                         Delete Post
                     </button>
+                    </div>
                 </footer>
             </section>
 

@@ -11,8 +11,8 @@ function AuthorPostDetails({ selectedId }) {
         content: post?.content || ""
     });
     const [isLoading, setIsLoading] = useState(false)
+    const [showDeletePopup, setShowDeletePopup] = useState(false);
 
-    // Open popup & prefill
     const openUpdatePopup = () => {
         setFormData({
             title: post.title,
@@ -65,6 +65,18 @@ function AuthorPostDetails({ selectedId }) {
         fetchPost();
     }, [selectedId])
 
+     const confirmDelete = async () => {
+        try {
+            setIsLoading(true)
+         const response = await connectToAPI(`api/posts/delete/${post.id}`, "DELETE");
+          if(response.status === 200){
+            window.location.reload()
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
     if (!selectedId || !post) {
         return (
             <>
@@ -93,6 +105,9 @@ function AuthorPostDetails({ selectedId }) {
 
                     <button className="update-btn" onClick={openUpdatePopup}>
                         Update Post
+                    </button>
+                    <button className="delete-btn" onClick={() => setShowDeletePopup(true)}>
+                        Delete Post
                     </button>
                 </footer>
             </section>
@@ -138,6 +153,29 @@ function AuthorPostDetails({ selectedId }) {
                     </div>
                 </div>
             )}
+
+             {showDeletePopup && (
+        <div className="modal-overlay">
+          <div className="modal danger">
+            <h3>Delete Post</h3>
+            <p>
+              Are you sure you want to permanently delete this post?
+            </p>
+
+            <div className="modal-actions">
+              <button
+                className="btn cancel"
+                onClick={() => setShowDeletePopup(false)}
+              >
+                Cancel
+              </button>
+              <button className="btn confirm" onClick={confirmDelete}>
+                Yes, Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
             {
                 isLoading && <Loading />

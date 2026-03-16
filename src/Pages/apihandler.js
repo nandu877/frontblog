@@ -5,7 +5,7 @@ const SERVER_URL = "https://backend-production-29df.up.railway.app/";
 
 const api = axios.create({
   baseURL: SERVER_URL,
-  timeout: 15000,
+  timeout: 45000,
 });
 
 
